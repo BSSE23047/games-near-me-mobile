@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Games Near Me",
+    "slug": "games-near-me",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gamesnearme.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.gamesnearme.app"
+    },
+    "scheme": "games-near-me",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Games Near Me uses your location to set venue address on the map."
+        }
+      ]
+    ]
+  }
+}
+
+
+
+
