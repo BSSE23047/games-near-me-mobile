@@ -13,6 +13,7 @@ import { useAuthStore } from '../../store/authStore';
 import { matchesService } from '../../services/matches';
 import { participantsService } from '../../services/participants';
 import { Match, MatchParticipant } from '../../types';
+import { stateBadgeStyle } from '../../utils/stateStyle';
 
 export default function MatchDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -88,7 +89,7 @@ export default function MatchDetailScreen() {
       <Text style={styles.participantName}>
         {item.player?.name || item.player?.email || 'Unknown'}
       </Text>
-      <Text style={[styles.participantState, styles[`state${item.state}`]]}>
+      <Text style={[styles.participantState, stateBadgeStyle(item.state)]}>
         {item.state}
       </Text>
     </View>
@@ -121,7 +122,7 @@ export default function MatchDetailScreen() {
           <Text style={styles.infoText}>
             Players: {participants?.length || 0}/{match.maxPlayers}
           </Text>
-          <Text style={[styles.state, styles[`state${match.state}`]]}>
+          <Text style={[styles.state, stateBadgeStyle(match.state)]}>
             {match.state}
           </Text>
         </View>
@@ -214,14 +215,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 4,
   },
-  stateAPPROVED: {
-    backgroundColor: '#34C759',
-    color: '#fff',
-  },
-  stateREQUESTED: {
-    backgroundColor: '#FF9500',
-    color: '#fff',
-  },
   visibility: {
     fontSize: 14,
     color: '#666',
@@ -278,26 +271,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 4,
-  },
-  stateREQUESTED: {
-    backgroundColor: '#FF9500',
-    color: '#fff',
-  },
-  stateAPPROVED: {
-    backgroundColor: '#34C759',
-    color: '#fff',
-  },
-  stateCHECKED_IN: {
-    backgroundColor: '#007AFF',
-    color: '#fff',
-  },
-  stateREJECTED: {
-    backgroundColor: '#FF3B30',
-    color: '#fff',
-  },
-  stateLEFT: {
-    backgroundColor: '#8E8E93',
-    color: '#fff',
   },
   loader: {
     margin: 20,

@@ -11,6 +11,7 @@ import { useRouter } from 'expo-router';
 import { useAuthStore } from '../store/authStore';
 import { matchesService } from '../services/matches';
 import { Match } from '../types';
+import { stateBadgeStyle } from '../utils/stateStyle';
 
 export default function MyMatchesScreen() {
   const router = useRouter();
@@ -64,7 +65,7 @@ export default function MyMatchesScreen() {
           <Text style={styles.matchInfoText}>
             {item.participants?.length || 0}/{item.maxPlayers} players
           </Text>
-          <Text style={[styles.matchState, styles[`state${item.state}`]]}>
+          <Text style={[styles.matchState, stateBadgeStyle(item.state)]}>
             {item.state}
           </Text>
         </View>
@@ -192,14 +193,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 4,
-  },
-  stateAPPROVED: {
-    backgroundColor: '#34C759',
-    color: '#fff',
-  },
-  stateREQUESTED: {
-    backgroundColor: '#FF9500',
-    color: '#fff',
   },
   participantStatus: {
     fontSize: 12,

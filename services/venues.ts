@@ -27,13 +27,9 @@ export const venuesService = {
       address: string;
       latitude: number;
       longitude: number;
-    },
-    accessToken?: string
+    }
   ): Promise<Venue> => {
-    const headers = accessToken
-      ? { Authorization: `Bearer ${accessToken}` }
-      : undefined;
-    const response = await apiClient.post<Venue>('/venues', data, { headers });
+    const response = await apiClient.post<Venue>('/venues', data);
     return response.data;
   },
 };

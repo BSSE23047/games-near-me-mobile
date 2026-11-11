@@ -2,6 +2,14 @@
 
 React Native mobile app for the Games Near Me platform, built with Expo.
 
+## Status
+
+A work-in-progress MVP. Players can find and join matches, hosts can create them, and venue owners can add venues, publish slots and approve matches.
+
+- It talks to a separate backend and a Supabase project, and the backend is not published yet. You can install it, type-check it and bundle it without one, but you can't sign in.
+- Styling is minimal and there are no automated tests yet. CI runs the type check and an iOS bundle build.
+- The screen list below predates the venue, slot and profile screens (`add-venue`, `create-slot`, `profile`).
+
 ## 🏗️ Tech Stack
 
 - **React Native** with **Expo**
@@ -143,6 +151,7 @@ Axios instance configured with:
 - `npm run android` - Run on Android
 - `npm run ios` - Run on iOS
 - `npm run web` - Run on web
+- `npm run typecheck` - Type-check the project
 
 ## 📝 Notes
 

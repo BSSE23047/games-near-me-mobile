@@ -42,7 +42,7 @@ export default function AddVenueScreen() {
   const [mapConfirmLoading, setMapConfirmLoading] = useState(false);
 
   const { mutate: createVenue, isPending } = useMutation({
-    mutationFn: venuesService.create,
+    mutationFn: (data: Parameters<typeof venuesService.create>[0]) => venuesService.create(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['myVenues'] });
       Alert.alert('Success', 'Venue added successfully', [
@@ -199,8 +199,7 @@ export default function AddVenueScreen() {
         address: address.trim(),
         latitude: lat,
         longitude: lng,
-      },
-      accessToken
+      }
     );
   };
 
